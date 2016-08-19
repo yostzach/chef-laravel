@@ -6,7 +6,13 @@
 #
 
 # Install MySQL server & MySQL client
-include_recipe "mysql"
+mysql_service 'foo' do
+  port '3306'
+  version '5.7'
+  initial_root_password 'change me'
+  action [:create, :start]
+end
+#include_recipe "mysql"
 #include_recipe "mysql::server"
 
 # Create database if it doesn't exist
